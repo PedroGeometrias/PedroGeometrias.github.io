@@ -27,7 +27,7 @@ h1, h2 {
 
 .project a {
     color: #00FF00;
-    text-decoration: underline #00ff00
+    text-decoration: underline 
 }
 
 .project a:hover {
