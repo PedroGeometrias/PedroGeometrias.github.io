@@ -6,13 +6,15 @@
         <link rel="icon" href="test.ico" type="image/x-icon" />
         <title>Pedro De Oliveira Haro Portfolio</title>
         <link rel="stylesheet" href="style.css">
-        <!-- Google Analytics -->
+
+        <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VSL0P9RBB"></script>
         <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-6VSL0P9RBB');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VSL0P9RBB');
         </script>
     </head>
     <body>
@@ -97,41 +99,41 @@
         </footer>
         <script>
         function generateStars(id, count) {
-        const container = document.getElementById(id);
-        container.innerHTML = ''; // Clear existing stars
-        for (let i = 0; i < count; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        star.style.top = `${Math.random() * container.clientHeight}px`;
-        star.style.left = `${Math.random() * container.clientWidth}px`;
-        container.appendChild(star);
-        }
+            const container = document.getElementById(id);
+            container.innerHTML = ''; // Clear existing stars
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.top = `${Math.random() * container.clientHeight}px`;
+                star.style.left = `${Math.random() * container.clientWidth}px`;
+                container.appendChild(star);
+            }
         }
 
         function adjustStarCount() {
-        const starContainers = ['stars', 'stars2', 'stars3'];
-        starContainers.forEach(id => {
-        const container = document.getElementById(id);
-        container.style.height = document.body.scrollHeight + 'px';
-        generateStars(id, 100);
-        });
+            const starContainers = ['stars', 'stars2', 'stars3'];
+            starContainers.forEach(id => {
+                const container = document.getElementById(id);
+                container.style.height = document.body.scrollHeight + 'px';
+                generateStars(id, 100);
+            });
         }
 
         function randomBlink() {
-        const stars = document.querySelectorAll('.star');
-        stars.forEach(star => {
-        if (Math.random() > 0.9) { // 10% chance to blink
-        star.style.animation = 'blinkStar 2s infinite';
-        } else {
-        star.style.animation = 'animStar 100s linear infinite';
-        }
-        });
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                if (Math.random() > 0.9) { // 10% chance to blink
+                    star.style.animation = 'blinkStar 2s infinite';
+                } else {
+                    star.style.animation = 'animStar 100s linear infinite';
+                }
+            });
         }
 
         window.addEventListener('resize', adjustStarCount);
         window.addEventListener('load', () => {
-        adjustStarCount();
-        setInterval(randomBlink, 1000);
+            adjustStarCount();
+            setInterval(randomBlink, 1000);
         });
         </script>
     </body>
