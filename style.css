@@ -54,6 +54,10 @@ footer {
     background: white;
 }
 
+.star.red {
+    background: red;
+}
+
 @keyframes animStar {
     from { transform: translateY(0); }
     to { transform: translateY(-100%); }
