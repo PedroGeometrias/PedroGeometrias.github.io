@@ -85,12 +85,19 @@ footer {
 }
 
 /* aqui fica mais interessante, eu crio as estrelas */
-/* estrelas normais sao maiores */
+/* eu desenho a pixel art delas usando box-shadow, estrelas normais sao maiores */
 .star {
-    position: absolute;
-    width: 2px;
-    height: 1px;
-    background: white;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow:
+    0 -1px 0 0 white,   /* just above center */
+    0 1px 0 0 white,    /* just below center */
+    -2px 0 0 0 #000,   /* left */
+    -1px 0 0 0 white,   /* just left of center */
+    1px 0 0 0 white,    /* just right of center */
+    2px 0 0 0 #000;    /* right */
 }
 
 /* aqui eu crio as anas vermelhas, um tipo diferente de estrela, ela é menor
@@ -99,6 +106,7 @@ footer {
     width: 1px;
     height: 1px;
     background: red;
+    box-shadow : none;
 }
 
 @keyframes animStar {
