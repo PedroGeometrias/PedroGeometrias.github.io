@@ -20,7 +20,6 @@ estrelas na janela
     gtag('config', '<%= process.env.GOOGLE_ANALYTICS_ID %>');
   </script>
 </head>
-
     <body>
         <!-- criando os elementos que representam os efeitos de estrelas na pagina -->
         <div id="stars"></div>
@@ -119,19 +118,25 @@ estrelas na janela
         <!-- Script para gerar e configurar as estrelas -->
         <script>
 function generateStars(id, count) {
-    // pego 
     const container = document.getElementById(id);
-    container.innerHTML = ''; // Limpa quaisquer estrelas existentes
-    for (let i = 0; i < count; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        // 15% de chance da estrela ser vermelha
-        if (Math.random() > 0.85) {
-            star.classList.add('red');
+    const existingStars = container.getElementsByClassName('star');
+    const diff = count - existingStars.length;
+
+    if (diff > 0) {
+        for (let i = 0; i < diff; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            if (Math.random() > 0.85) {
+                star.classList.add('red');
+            }
+            container.appendChild(star);
         }
+    }
+
+    for (let i = 0; i < count; i++) {
+        const star = existingStars[i];
         star.style.top = `${Math.random() * container.clientHeight}px`;
         star.style.left = `${Math.random() * container.clientWidth}px`;
-        container.appendChild(star);
     }
 }
 
@@ -147,10 +152,10 @@ function adjustStarCount() {
 function randomBlink() {
     const stars = document.querySelectorAll('.star');
     stars.forEach(star => {
-        if (Math.random() > 0.87) { // 10% de chance de piscar
-            star.style.animation = 'blinkStar 2s infinite';
+        if (Math.random() > 0.87) {
+            star.classList.add('blink');
         } else {
-            star.style.animation = 'animStar 100s linear infinite';
+            star.classList.remove('blink');
         }
     });
 }
@@ -160,7 +165,7 @@ window.addEventListener('load', () => {
     adjustStarCount();
     setInterval(randomBlink, 1000);
 });
-        </script>
+</script>
     </body>
 </html>
 
