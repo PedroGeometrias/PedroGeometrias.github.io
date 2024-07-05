@@ -15,32 +15,32 @@
 * curiosidade */
 
 @keyframes typing {
-  from { width: 0; } /* Ela comeca da largura zero */
-  to { width: 34ch; } /* A animacao tem 34 characteres*/
+  from { width: 1ch; } /* Ela comeca da largura 1, pois o character $ n ja deve estar na tela*/
+  to { width: 33ch; } /* A animacao tem 33 characteres*/
 }
 
 @keyframes blink-caret {
   from, to { border-color: transparent; }
-  70% { border-color: #00FF00; }
+  70% { border-color: #9EFF83; }
 }
 /* Aqui é a onde eu realmente crio a animacao, junto com o "cursor", que é so uma borda*/
-.typewriter h1 {
+.termAnim h1 {
   overflow: hidden; /* Texto tem de ficar invisivel enquanto n for digitado */
-  border-right: .40em solid #00FF00; /* Cursor*/
+  border-right: .40em solid #9EFF83; /* Cursor*/
   white-space: nowrap;
   margin: 0 auto;
   display: inline-block; 
-  /* aqui eu seto a animacao de "typing", ela dura 6 segundos e tem 34 passos, um para cada char, dps dela 
+  /* aqui eu seto a animacao de "typing", ela dura 6 segundos e tem 33 passos, um para cada char, dps dela 
     * terminar eu comeco a animcao do cursor
   */
-  animation: typing 6s steps(34, end), blink-caret 1s step-end infinite 6s;
+  animation: typing 6s steps(33, end), blink-caret 1s step-end infinite 6s;
   position: relative;
 }
 
 /* agr eu seto coisas padrao do site, nada muito diferente do normal */
 body {
-    background-color: black;
-    color: #00FF00;
+    background-color: #141010;
+    color: #9EFF83;
     font-size:20px;
     font-family: 'Font-Terminal', monospace; 
     padding: 20px;
@@ -51,17 +51,25 @@ body {
 }
 
 h2 {
-    border-bottom: 1px solid #00FF00;
+    border-bottom: 1px solid #9EFF83;
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
+
+.icon{
+     width: 26px; /* Adjust size as needed */
+    height: 26px; /* Adjust size as needed */
+    vertical-align: middle; /* Align the icon with the middle of the text */
+    margin-left: 5px; /* Add some space between the icon and the text */
+}
+
 .navBar{
-    border-top: 1px solid #00FF00;
+    border-top: 1px solid #9EFF83;
 }
 .section {
     margin: 20px 0;
     padding: 10px;
-    border: 1px solid #00FF00;
+    border: 1px solid #9EFF83;
 }
 
 .project {
@@ -69,7 +77,7 @@ h2 {
 }
 
 .project a {
-    color: #00FF00;
+    color: #9EFF83;
     text-decoration: underline 
 }
 
@@ -79,7 +87,7 @@ h2 {
 
 footer {
     margin-top: 50px;
-    border-top: 1px solid #00FF00;
+    border-top: 1px solid #9EFF83;
     padding-top: 10px;
     text-align: center;
 }
@@ -94,18 +102,18 @@ footer {
   box-shadow:
     0 -1px 0 0 white,   /* just above center */
     0 1px 0 0 white,    /* just below center */
-    -2px 0 0 0 #000,   /* left */
+    -2px 0 0 0 #141010,   /* left */
     -1px 0 0 0 white,   /* just left of center */
     1px 0 0 0 white,    /* just right of center */
-    2px 0 0 0 #000;    /* right */
+    2px 0 0 0 #141010;    /* right */
 }
 
 /* aqui eu crio as anas vermelhas, um tipo diferente de estrela, ela é menor
 *  e a luz dela é mais fraca */
 .star.red {
-    width: 1px;
-    height: 1px;
-    background: red;
+    width: 2px;
+    height: 2px;
+    background: #800020;
     box-shadow : none;
 }
 
@@ -130,7 +138,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #00FF00;
+    color: #9EFF83;
     text-decoration: none;
 }
 
