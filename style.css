@@ -100,12 +100,12 @@ footer {
   height: 1px;
   background: transparent;
   box-shadow:
-    0 -1px 0 0 white,   /* just above center */
-    0 1px 0 0 white,    /* just below center */
-    -2px 0 0 0 #141010,   /* left */
-    -1px 0 0 0 white,   /* just left of center */
-    1px 0 0 0 white,    /* just right of center */
-    2px 0 0 0 #141010;    /* right */
+    0 -1px 0 0 white,   
+    0 1px 0 0 white,    
+    -2px 0 0 0 #141010,  
+    -1px 0 0 0 white,   
+    1px 0 0 0 white,    
+    2px 0 0 0 #141010;    
 }
 
 /* aqui eu crio as anas vermelhas, um tipo diferente de estrela, ela é menor
