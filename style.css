@@ -15,16 +15,24 @@
 * curiosidade */
 
 @keyframes typing {
-  from { width: 1ch; } /* Ela comeca da largura 1, pois o character $ n ja deve estar na tela*/
-  to { width: 33ch; } /* A animacao tem 33 characteres*/
+  from { width: 0; } /* Ela comeca da largura 1, pois o character $ n ja deve estar na tela*/
+  to { width: 100%; } /* A animacao tem 33 characteres*/
 }
 
 @keyframes blink-caret {
   from, to { border-color: transparent; }
   70% { border-color: #9EFF83; }
 }
+
+.termAnim {
+  max-width: 90vw; 
+  margin: 0 auto;
+  text-align: center;
+}
+
 /* Aqui é a onde eu realmente crio a animacao, junto com o "cursor", que é so uma borda*/
 .termAnim h1 {
+  font-size: 5vw;
   overflow: hidden; /* Texto tem de ficar invisivel enquanto n for digitado */
   border-right: .40em solid #9EFF83; /* Cursor*/
   white-space: nowrap;
