@@ -122,6 +122,7 @@ function generateStars(id, count) {
     const existingStars = container.getElementsByClassName('star');
     const diff = count - existingStars.length;
 
+    // If more stars needed, create and append them
     if (diff > 0) {
         for (let i = 0; i < diff; i++) {
             const star = document.createElement('div');
@@ -133,6 +134,7 @@ function generateStars(id, count) {
         }
     }
 
+    // Update positions of all stars
     for (let i = 0; i < count; i++) {
         const star = existingStars[i];
         star.style.top = `${Math.random() * container.clientHeight}px`;
@@ -142,10 +144,12 @@ function generateStars(id, count) {
 
 function adjustStarCount() {
     const starContainers = ['stars', 'stars2', 'stars3'];
+    const starCount = window.innerWidth < 768 ? 60 : 180;
+    
     starContainers.forEach(id => {
         const container = document.getElementById(id);
         container.style.height = document.body.scrollHeight + 'px';
-        generateStars(id, 180);
+        generateStars(id, starCount);
     });
 }
 
@@ -160,7 +164,12 @@ function randomBlink() {
     });
 }
 
-window.addEventListener('resize', adjustStarCount);
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(adjustStarCount, 200);
+});
+
 window.addEventListener('load', () => {
     adjustStarCount();
     setInterval(randomBlink, 1000);
