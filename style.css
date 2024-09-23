@@ -1,0 +1,165 @@
+/* 
+* Criador: Pedro Haro
+* Data de criacao : 04/07/2024
+* Nome : Style.css
+* motivo : customizar o site do meu portifolio, junto com a criacao de animacoes
+*/
+
+/* Fonte usada é a mesma do meu terminal, eu so tive que converter ela */
+@font-face {
+    font-family: 'Font-Terminal';
+    src: url('DinaRemasterII.woff') format('woff');
+}
+
+/* Animacao de digitacao, inspiracao : http://www.tilde.club/, eles chamam ela de "fancyboy" se alguem tiver 
+* curiosidade */
+
+@keyframes typing {
+from { width: 0; } /* Ela comeca da largura 1, pois o character $ n ja deve estar na tela*/
+to { width: 100%; } /* A animacao tem 33 characteres*/
+}
+
+@keyframes blink-caret {
+from, to { border-color: transparent; }
+70% { border-color: #9EFF83; }
+}
+
+/* Aqui é a onde eu realmente crio a animacao, junto com o "cursor", que é so uma borda*/
+.termAnim h1 {
+    font-size: 5vw;
+    overflow: hidden; /* Texto tem de ficar invisivel enquanto n for digitado */
+    border-right: .40em solid #9EFF83; /* Cursor*/
+    white-space: nowrap;
+    margin: 0 auto;
+    display: inline-block; 
+    /* aqui eu seto a animacao de "typing", ela dura 6 segundos e tem 33 passos, um para cada char, dps dela 
+* terminar eu comeco a animcao do cursor
+*/
+    animation: typing 6s steps(33, end), blink-caret 1s step-end infinite 6s;
+    position: relative;
+}
+
+/* agr eu seto coisas padrao do site, nada muito diferente do normal */
+body {
+    background-color: #141010;
+    color: #9EFF83;
+    font-size:20px;
+    font-family: 'Font-Terminal', monospace; 
+    padding: 20px;
+    margin: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    position: relative;
+}
+
+h2 {
+    border-bottom: 1px solid #9EFF83;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.icon{
+    width: 26px; /* Adjust size as needed */
+    height: 26px; /* Adjust size as needed */
+    vertical-align: middle; /* Align the icon with the middle of the text */
+    margin-left: 5px; /* Add some space between the icon and the text */
+}
+
+.navBar{
+    border-top: 1px solid #9EFF83;
+}
+.section {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #9EFF83;
+}
+
+.project {
+    margin-bottom: 20px;
+}
+
+.project a {
+    color: #9EFF83;
+    text-decoration: underline 
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 50px;
+    border-top: 1px solid #9EFF83;
+    padding-top: 10px;
+    text-align: center;
+}
+
+/* aqui fica mais interessante, eu crio as estrelas */
+/* eu desenho a pixel art delas usando box-shadow, estrelas normais sao maiores */
+.star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow:
+        0 -1px 0 0 white,   
+        0 1px 0 0 white,    
+        -2px 0 0 0 #141010,  
+        -1px 0 0 0 white,   
+        1px 0 0 0 white,    
+        2px 0 0 0 #141010;    
+    animation: animStar 100s linear infinite;
+}
+
+/* aqui eu crio as anas vermelhas, um tipo diferente de estrela, ela é menor
+*  e a luz dela é mais fraca */
+.star.red {
+    width: 2px;
+    height: 2px;
+    background: #800020;
+    box-shadow : none;
+}
+
+@keyframes blinkStar {
+0%, 20%, 50%, 80%, 100% { opacity: 1; }
+40%, 60% { opacity: 0; }
+}
+
+.star.blink {
+    animation: blinkStar 2s infinite;
+}
+
+@keyframes animStar {
+from { transform: translateY(0); }
+to { transform: translateY(-100%); }
+}
+
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: #9EFF83;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+#stars, #stars2, #stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+

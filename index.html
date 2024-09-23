@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!-- 
+Criador : Pedro De Oliveira Haro
+dia : 03/07/2024
+Funcao : este arquivo contem a estrutura do meu portfolio, contem tambem o script necessário para renderizar as 
+estrelas na janela
+-->
+<!-- Defino a linguagem do site como ingles-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pedro De Oliveira Haro Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!-- criando os elementos que representam os efeitos de estrelas na pagina -->
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+
+        <!-- Aqui eu crio uma pseudo home, onde eu coloco alguns links da pagina organizados por secoes-->
+        <header>
+            <!-- termAnim e a animacao de digitacao-->
+            <div class="termAnim">
+                <h1>$ Pedro De Oliveira Haro Portfolio</h1>
+            </div>
+            <!-- links que ajudam na navegacao do site -->
+            <nav class="navBar">
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Um pouco sobre mim para possiveis contratantes-->
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p>My name is Pedro. I love programming and math. I enjoy working with low-level programming languages like Assembly and C/C++. My favorite text editor is Neovim, and it shows in my extensive configuration.</p>
+        </section>
+
+        <!-- A parte mais importante do site, onde eu coloco os links dos meus projetos, e dou uma explicacao brevia deles-->
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Neovim Configuration</h3>
+                <p>My custom Neovim config, written in Lua.</p>
+                <a class="linkToGit" href="https://github.com/PedroGeometrias/NeovimConfig">View on GitHub</a>
+            </div>
+            <div class="project">
+                <h3>Brainfuck Interpreter in C</h3>
+                <p>Created a Brainfuck interpreter in C that can hold up to 30,000 cells.</p>
+                <a class="linkToGit" href="https://github.com/PedroGeometrias/Brainfuck-in-c">View on GitHub</a>
+            </div>
+            <div class="project">
+                <h3>Space Invaders Game</h3>
+                <p>Currently working with some friends on a Space Invaders game written in Java.</p>
+                <a class="linkToGit" href="https://github.com/PedroGeometrias/space-invaders">View on GitHub</a>
+            </div>
+            <div class="project">
+                <h3>Server in C</h3>
+                <p>A server and client application written in C that handles a single thread for messaging.</p>
+                <a class="linkToGit" href="https://github.com/PedroGeometrias/Server-in-C">View on GitHub</a>
+            </div>
+            <div class="project">
+                <h3>BeeCrowd</h3>
+                <p>A list of every problem that I have ever finished from the BeeCrowd platform.</p>
+                <a class="linkToGit" href="https://github.com/PedroGeometrias/beeCrowdExercises">View on GitHub</a>
+            </div>
+        </section>
+        <!-- Aqui eu listo as linguagens de programacao que eu mais domino, a lista pode estar desatualizada-->
+        <section id="skills" class="section">
+            <h2>Programming Languages</h2>
+            <ul>
+                <li>C</li>
+                <li>C++</li>
+                <li>Java</li>
+                <li>C#</li>
+                <li>Lua</li>
+                <li>Assembly</li>
+                <li>Html</li>
+                <li>Css</li> 
+                <li>JavaScript</li> 
+                <li>Cobol</li> 
+            </ul>
+            <!-- Algumas abilidades extras que possiveis contratantes se interessem, essa lista tbm pode estar desatualizada-->
+            <h2>Skills</h2>
+            <ul>
+                <li>Portuguese</li>
+                <li>English</li>
+                <li>Excel</li>
+                <li>Linux</li>
+            </ul>
+        </section>
+
+        <!-- Como me contactar caso se interessem-->
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:harop6770@gmail.com">harop6770@gmail.com</a></p>
+        </section>
+        <footer>
+            <p>&copy; 2024 Pedro De Oliveira Haro</p>
+            <p>
+                <a href="https://github.com/PedroGeometrias">GitHub <img src="githubIcon.ico" alt="Git" class="icon"></a> |
+                <a href="https://www.linkedin.com/in/pedro-oliveira-haro/">LinkedIn<img src="Linkedinicon.ico" alt="Linkedin" class="icon"></a>
+            </p>
+        </footer>
+
+        <!-- Script para gerar e configurar as estrelas -->
+        <script>
+function generateStars(id, count) {
+    const container = document.getElementById(id);
+    const existingStars = container.getElementsByClassName('star');
+    const diff = count - existingStars.length;
+
+    if (diff > 0) {
+        for (let i = 0; i < diff; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            if (Math.random() > 0.85) {
+                star.classList.add('red');
+            }
+            container.appendChild(star);
+        }
+    }
+
+    for (let i = 0; i < count; i++) {
+        const star = existingStars[i];
+        star.style.top = `${Math.random() * container.clientHeight}px`;
+        star.style.left = `${Math.random() * container.clientWidth}px`;
+    }
+}
+
+function adjustStarCount() {
+    const starContainers = ['stars', 'stars2', 'stars3'];
+    const starCount = window.innerWidth < 768 ? 60 : 180;
+
+    starContainers.forEach(id => {
+        const container = document.getElementById(id);
+        container.style.height = document.body.scrollHeight + 'px';
+        generateStars(id, starCount);
+    });
+}
+
+function randomBlink() {
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(star => {
+        if (Math.random() > 0.87) {
+            star.classList.add('blink');
+        } else {
+            star.classList.remove('blink');
+        }
+    });
+}
+
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(adjustStarCount, 200);
+});
+
+window.addEventListener('load', () => {
+    adjustStarCount();
+    setInterval(randomBlink, 1000);
+});
+</script>
+    </body>
+</html>
+
