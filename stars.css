@@ -1,0 +1,49 @@
+/* Stars background */
+#stars, #stars2, #stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+.star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow:
+        0 -1px 0 0 white,   
+        0 1px 0 0 white,    
+        -2px 0 0 0 #141010,  
+        -1px 0 0 0 white,   
+        1px 0 0 0 white,    
+        2px 0 0 0 #141010;    
+    animation: animStar 100s linear infinite;
+}
+
+/* aqui eu crio as anas vermelhas, um tipo diferente de estrela, ela é menor
+*  e a luz dela é mais fraca */
+.star.red {
+    width: 2px;
+    height: 2px;
+    background: #800020;
+    box-shadow : none;
+}
+
+@keyframes blinkStar {
+0%, 20%, 50%, 80%, 100% { opacity: 1; }
+40%, 60% { opacity: 0; }
+}
+
+.star.blink {
+    animation: blinkStar 2s infinite;
+}
+
+@keyframes animStar {
+from { transform: translateY(0); }
+to { transform: translateY(-100%); }
+}
+

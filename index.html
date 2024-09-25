@@ -7,13 +7,14 @@ estrelas na janela
 -->
 <!-- Defino a linguagem do site como ingles-->
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pedro De Oliveira Haro Portfolio</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro De Oliveira Haro Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stars.css">
+</head>
+<body>
         <!-- criando os elementos que representam os efeitos de estrelas na pagina -->
         <div id="stars"></div>
         <div id="stars2"></div>
@@ -77,7 +78,6 @@ estrelas na janela
                 <li>C</li>
                 <li>C++</li>
                 <li>Java</li>
-                <li>C#</li>
                 <li>Lua</li>
                 <li>Assembly</li>
                 <li>Html</li>
@@ -94,7 +94,6 @@ estrelas na janela
                 <li>Linux</li>
             </ul>
         </section>
-
         <!-- Como me contactar caso se interessem-->
         <section id="contact" class="section">
             <h2>Contact</h2>
@@ -107,65 +106,7 @@ estrelas na janela
                 <a href="https://www.linkedin.com/in/pedro-oliveira-haro/">LinkedIn<img src="Linkedinicon.ico" alt="Linkedin" class="icon"></a>
             </p>
         </footer>
-
-        <!-- Script para gerar e configurar as estrelas -->
-        <script>
-function generateStars(id, count) {
-    const container = document.getElementById(id);
-    const existingStars = container.getElementsByClassName('star');
-    const diff = count - existingStars.length;
-
-    if (diff > 0) {
-        for (let i = 0; i < diff; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            if (Math.random() > 0.85) {
-                star.classList.add('red');
-            }
-            container.appendChild(star);
-        }
-    }
-
-    for (let i = 0; i < count; i++) {
-        const star = existingStars[i];
-        star.style.top = `${Math.random() * container.clientHeight}px`;
-        star.style.left = `${Math.random() * container.clientWidth}px`;
-    }
-}
-
-function adjustStarCount() {
-    const starContainers = ['stars', 'stars2', 'stars3'];
-    const starCount = window.innerWidth < 768 ? 60 : 180;
-
-    starContainers.forEach(id => {
-        const container = document.getElementById(id);
-        container.style.height = document.body.scrollHeight + 'px';
-        generateStars(id, starCount);
-    });
-}
-
-function randomBlink() {
-    const stars = document.querySelectorAll('.star');
-    stars.forEach(star => {
-        if (Math.random() > 0.87) {
-            star.classList.add('blink');
-        } else {
-            star.classList.remove('blink');
-        }
-    });
-}
-
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(adjustStarCount, 200);
-});
-
-window.addEventListener('load', () => {
-    adjustStarCount();
-    setInterval(randomBlink, 1000);
-});
-</script>
+        <script src="stars.js"></script>
     </body>
 </html>
 

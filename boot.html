@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boot Sequence</title>
+    <link rel="stylesheet" href="boot.css">
+    <link rel="stylesheet" href="stars.css">
+</head>
+<body>
+    <!-- Starry background for boot sequence -->
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <!-- Boot sequence output -->
+    <div id="boot-sequence">
+        <div id="boot-output"></div>
+        <p id="continue-message" class="hidden">Press <strong>Enter</strong> to continue...</p>
+    </div>
+    <script src="stars.js"></script>
+    <script>
+    const bootMessages = [
+        "Initializing system...",
+        "Checking Neovim configuration...",
+        "Loading projects...",
+        "Setting up retro interface...",
+        "Configuring terminal display...",
+        "Almost ready..."
+    ];
+
+    const bootOutput = document.getElementById('boot-output');
+    const continueMessage = document.getElementById('continue-message');
+
+    // Simulate the boot sequence
+    function simulateBootSequence() {
+        let currentMessageIndex = 0;
+
+        function displayNextMessage() {
+            if (currentMessageIndex < bootMessages.length) {
+                const message = document.createElement('p');
+                message.textContent = bootMessages[currentMessageIndex];
+                bootOutput.appendChild(message);
+
+                currentMessageIndex++;
+                setTimeout(displayNextMessage, 1000); // Show next message after 1 second
+            } else {
+                setTimeout(() => {
+                    continueMessage.classList.remove('hidden');
+                    document.addEventListener('keydown', handleKeyPress);
+                }, 1000);
+            }
+        }
+
+        displayNextMessage();
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            window.location.href = "index.html";
+        }
+    }
+
+    window.addEventListener('load', simulateBootSequence);
+    </script>
+</body>
+</html>
+

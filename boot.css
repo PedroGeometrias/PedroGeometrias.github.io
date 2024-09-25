@@ -1,0 +1,41 @@
+
+/* Ensure full-page black background */
+
+@font-face {
+    font-family: 'Font-Terminal';
+    src: url('DinaRemasterII.woff') format('woff');
+}
+
+body {
+    background-color: #141010;
+    color: #9EFF83;
+    font-size:20px;
+    font-family: 'Font-Terminal', monospace; 
+    height: 100vh;
+}
+
+/* Boot sequence output (centered) */
+#boot-sequence {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 600px; /* Fixed width */
+    max-width: 80%;
+}
+
+/* Hide the "Press Enter" message initially */
+.hidden {
+    display: none;
+}
+
+/* Style for boot output text */
+#boot-output p {
+    margin: 0;
+    padding: 5px;
+    font-size: 18px;
+    color: #00FF00;
+}
+
