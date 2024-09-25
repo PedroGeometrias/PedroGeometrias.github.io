@@ -47,6 +47,7 @@ const continueMessage = document.getElementById('continue-message');
 
 function simulateBootSequence() {
     document.addEventListener('keydown', handleKeyPress);
+    document.addEventListener('click', handleClick);
     let currentMessageIndex = 0;
 
     function displayNextMessage() {
