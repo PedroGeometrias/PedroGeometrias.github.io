@@ -1,6 +1,3 @@
-
-/* Ensure full-page black background */
-
 @font-face {
     font-family: 'Font-Terminal';
     src: url('DinaRemasterII.woff') format('woff');
@@ -8,13 +5,13 @@
 
 body {
     background-color: #141010;
+    cursor: url('cursor.png'),auto;
     color: #9EFF83;
     font-size:20px;
     font-family: 'Font-Terminal', monospace; 
     height: 100vh;
 }
 
-/* Boot sequence output (centered) */
 #boot-sequence {
     position: absolute;
     top: 50%;
@@ -22,20 +19,48 @@ body {
     z-index: 1;
     transform: translate(-50%, -50%);
     text-align: center;
-    width: 600px; /* Fixed width */
+    width: 600px;
     max-width: 80%;
 }
 
-/* Hide the "Press Enter" message initially */
 .hidden {
     display: none;
 }
 
-/* Style for boot output text */
+#boot-output {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  flex-direction: column;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #00FF00; }
+}
+
 #boot-output p {
-    margin: 0;
-    padding: 5px;
-    font-size: 18px;
-    color: #00FF00;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #00FF00;
+  color: #00FF00;
+  margin: 5px 0;
+}
+
+#boot-output p.typing {
+  width: 0;
+  animation: typing 4s steps(40, end), blink-caret 1s step-end infinite;
+}
+
+#boot-output p.finished-typing {
+  border-right: none;
 }
 

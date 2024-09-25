@@ -8,60 +8,84 @@
     <link rel="stylesheet" href="stars.css">
 </head>
 <body>
-    <!-- Starry background for boot sequence -->
     <div id="stars"></div>
     <div id="stars2"></div>
     <div id="stars3"></div>
 
-    <!-- Boot sequence output -->
     <div id="boot-sequence">
         <div id="boot-output"></div>
         <p id="continue-message" class="hidden">Press <strong>Enter</strong> to continue...</p>
     </div>
     <script src="stars.js"></script>
     <script>
-    const bootMessages = [
-        "Initializing system...",
-        "Checking Neovim configuration...",
-        "Loading projects...",
-        "Setting up retro interface...",
-        "Configuring terminal display...",
-        "Almost ready..."
-    ];
+function handleKeyPress(event) {
+    if (event.key === "Enter") {
+        proceedToNextPage();
+    }
+}
 
-    const bootOutput = document.getElementById('boot-output');
-    const continueMessage = document.getElementById('continue-message');
+function handleClick() {
+    proceedToNextPage();
+}
 
-    // Simulate the boot sequence
-    function simulateBootSequence() {
-        let currentMessageIndex = 0;
+function proceedToNextPage() {
+    window.location.href = "home.html"; 
+    document.removeEventListener('keydown', handleKeyPress);
+    document.removeEventListener('click', handleClick);
+}
+const bootMessages = [
+    "$ nitializing system...",
+    "$ Checking Neovim configuration...",
+    "$ Loading projects...",
+    "$ Setting up retro interface...",
+    "$ Configuring terminal display...",
+    "$ Almost ready..."
+];
 
-        function displayNextMessage() {
-            if (currentMessageIndex < bootMessages.length) {
-                const message = document.createElement('p');
-                message.textContent = bootMessages[currentMessageIndex];
-                bootOutput.appendChild(message);
+const bootOutput = document.getElementById('boot-output');
+const continueMessage = document.getElementById('continue-message');
 
-                currentMessageIndex++;
-                setTimeout(displayNextMessage, 1000); // Show next message after 1 second
-            } else {
-                setTimeout(() => {
-                    continueMessage.classList.remove('hidden');
-                    document.addEventListener('keydown', handleKeyPress);
-                }, 1000);
+function simulateBootSequence() {
+    document.addEventListener('keydown', handleKeyPress);
+    let currentMessageIndex = 0;
+
+    function displayNextMessage() {
+        if (currentMessageIndex < bootMessages.length) {
+            const currentMessage = bootMessages[currentMessageIndex];
+            const typingSpeed = 100;
+            const typingDuration = (currentMessage.length * typingSpeed) - 600;
+
+            const message = document.createElement('p');
+            message.textContent = currentMessage;
+            message.classList.add('typing');
+            bootOutput.appendChild(message);
+
+            if (currentMessageIndex > 0) {
+                const previousMessage = bootOutput.children[currentMessageIndex - 1];
+                previousMessage.classList.remove('typing');
+                previousMessage.classList.add('finished-typing');
             }
-        }
 
-        displayNextMessage();
+            currentMessageIndex++;
+
+            setTimeout(displayNextMessage, typingDuration);
+        } else {
+            const lastMessage = bootOutput.children[currentMessageIndex - 1];
+            lastMessage.classList.remove('typing');
+            lastMessage.classList.add('finished-typing');
+
+            setTimeout(() => {
+                continueMessage.classList.remove('hidden');
+                document.addEventListener('keydown', handleKeyPress);
+                document.addEventListener('click', handleClick); 
+            }, 1000);
+        }
     }
 
-    function handleKeyPress(event) {
-        if (event.key === "Enter") {
-            window.location.href = "home.html";
-        }
-    }
+    displayNextMessage();
+}
 
-    window.addEventListener('load', simulateBootSequence);
+window.addEventListener('load', simulateBootSequence);
     </script>
 </body>
 </html>
