@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boot Sequence</title>
-    <link rel="stylesheet" href="boot.css">
-    <link rel="stylesheet" href="stars.css">
-</head>
-<body>
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Boot Sequence</title>
+        <link rel="stylesheet" href="boot.css">
+        <link rel="stylesheet" href="stars.css">
+    </head>
+    <body>
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
 
-    <div id="boot-sequence">
-        <div id="boot-output"></div>
+        <div id="boot-sequence">
+            <div id="boot-output"></div>
+        </div>
         <p id="continue-message" class="hidden">Press <strong>Enter</strong> to continue...</p>
-    </div>
-    <script src="stars.js"></script>
-    <script>
+        <script src="stars.js"></script>
+        <script>
 function handleKeyPress(event) {
     if (event.key === "Enter") {
         proceedToNextPage();
@@ -87,7 +87,7 @@ function simulateBootSequence() {
 }
 
 window.addEventListener('load', simulateBootSequence);
-    </script>
-</body>
+</script>
+    </body>
 </html>
 

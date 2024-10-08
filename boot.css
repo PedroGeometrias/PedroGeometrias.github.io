@@ -2,6 +2,23 @@
     font-family: 'Font-Terminal';
     src: url('DinaRemasterII.woff') format('woff');
 }
+#continue-message {
+    position: absolute;
+    bottom: 10%; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5vw; 
+    color: #9EFF83;
+    font-family: 'Font-Terminal', monospace;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 2; 
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
 
 body {
     background-color: #141010;
