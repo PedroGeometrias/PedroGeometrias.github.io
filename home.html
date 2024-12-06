@@ -39,30 +39,66 @@ estrelas na janela
         <!-- Um pouco sobre mim para possiveis contratantes-->
         <section id="about" class="section">
             <h2>About Me</h2>
-            <p>My name is Pedro. I love programming and math. I enjoy working with low-level programming languages like Assembly and C/C++. My favorite text editor is Neovim, and it shows in my extensive configuration.</p>
+                <p>
+                    My name is Pedro. My main interests are comics, math, video games, space, and Linux. The design of this website gives a 
+                    very nice picture of what type of person I am, and I'm happy that you took time out of your day to take a look at it
+                </p>
+                <p>
+                    My main focus is on close-to-the-metal languages like C, C++, and Assembly, but I like to feel fancy with Lua and Python 
+                    from time to time. My front-end skills are nothing to scoff at either, with the stars being rendered right on your 
+                    screen now, made entirely with pure CSS, as the typing animations, and the whole logic of the site built in pure JavaScript.
+                </p>
+                <p>
+                    I've been using Linux as my daily driver for some time now, getting a really good grasp at the powers of the terminal. 
+                    My entire workflow is centered around my keyboard and Neovim configuration, with Bash scripts tying everything together.
+               </p>
         </section>
 
         <!-- A parte mais importante do site, onde eu coloco os links dos meus projetos, e dou uma explicacao brevia deles-->
         <section id="projects" class="section">
             <h2>Projects</h2>
             <div class="project">
+                <h3>CHESS AI</h3>
+                <p>
+                    I have written a AI that plays chess, it's integrated with a cross platform socket server written
+                    in c, that's connected with a chess board where users can play against my AI, the AI was built using
+                    tensorflow and the chess board with SLD2
+                </p>
+                <a class="linkToGit" href="https://github.com/PedroGeometrias/chessAI">View on GitHub</a>
+            </div>
+            <div class="project">
                 <h3>Neovim Configuration</h3>
-                <p>My custom Neovim config, written in Lua.</p>
+                <p>
+                    My custom Neovim config, having an extremely modular lsp configuration and custom keymappings for fast code editing, 
+                    with custom scripts for navigation and text manipulations, I've written a comprehensive README on its GitHub page
+                    if you are interested
+                </p>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/NeovimConfig">View on GitHub</a>
             </div>
             <div class="project">
                 <h3>Brainfuck Interpreter in C</h3>
-                <p>Created a Brainfuck interpreter in C that can hold up to 30,000 cells.</p>
+                <p>A lightweight and fast Brainfuck interpreter, it supports all Brainfuck commands and handles complex loop structures.
+                    It’s capable of managing up to 30,000 brainfuck cells, Implementing the loop logic was both the most difficulty and fun 
+                    part of this project.
+                </p>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/Brainfuck-in-c">View on GitHub</a>
             </div>
             <div class="project">
                 <h3>Space Invaders Game</h3>
-                <p>Currently working with some friends on a Space Invaders game written in Java.</p>
+                <p>
+                This game is written in Java. I made it thread-safe with a game loop inspired by Minecraft. 
+                It has different types of aliens and a boss with multiple types of attacks. Everything has collision 
+                detection. The game loop handles the logic and the drawing, the latter involving multiple buffered 
+                images manipulated on the fly.
+                </p>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/space-invaders">View on GitHub</a>
             </div>
             <div class="project">
                 <h3>Server in C</h3>
-                <p>A server and client application written in C that handles a single thread for messaging.</p>
+                <p>
+                    bi-directional communication between two clients, with a server whose purpose 
+                    is to relay messages. It is thread-safe and uses sockets, written in c.
+                </p>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/Server-in-C">View on GitHub</a>
             </div>
             <div class="project">
