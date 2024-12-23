@@ -1,83 +1,147 @@
+/* Elementos mantem o tamanho total */
+* {
+    box-sizing: border-box;
+}
+
+/* Fonte usada no projeto  */ 
 @font-face {
     font-family: 'Font-Terminal';
     src: url('DinaRemasterII.woff') format('woff');
 }
-#continue-message {
-    position: absolute;
-    bottom: 10%; 
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.5vw; 
-    color: #9EFF83;
+
+/* Pagina */
+html, body {
+    /* eu quero que os elementos assuman toda a altura suportoda pela tela */
+    height: 100%;
+    /* caso algum elemento seja maior do que o suportado, eu não permito o scroll */
+    overflow: hidden; 
     font-family: 'Font-Terminal', monospace;
-    text-align: center;
-    white-space: nowrap;
-    z-index: 2; 
-    cursor: pointer;
 }
 
-.hidden {
-    display: none;
-}
-
+/* Corpo da pagina */
 body {
+    /* todos os elementos são alinhados automaticamente em colunas (Um encima do outro) */
+    display: flex;
+    flex-direction: column;
+    /* alinho todos no centro  */
+    align-items: center;
+    /* cor de fundo e das letras padrão do projeto */
     background-color: #141010;
-    cursor: url('cursor.png'),auto;
     color: #9EFF83;
-    font-size:20px;
-    font-family: 'Font-Terminal', monospace; 
-    height: 100vh;
 }
 
-#boot-sequence {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 600px;
-    max-width: 80%;
+/* Onde o jogo ocorre */
+.game_frame {
+    cursor: url(assets/scope.png), auto;
+    /* width do frame é a mesma do "terminal" */
+    width: 80%;
+    /* calculo de maneira dinamica a altura do frame, sendo a altura total menos a altura do terminal */
+    height: calc(100vh - 25%); 
+    /* borda que limita o jogo */
+    border: 1px solid #9EFF83;
+    /* eu quero que não exista uma borda entre a parte de cima do "terminal" e a parte de baixo do frame */
+    border-bottom: none; 
+    /* o frame tem de ser invisivel pois eu quero que o usuario seja capaz de vizualizar as estrelas dentro do frame */
+    background-color: transparent;
+    /* alinhamento */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.hidden {
-    display: none;
+#gameCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: rgba(188, 241, 242, 0.03) 
 }
 
-#boot-output {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-  flex-direction: column;
+/* Header do terminal */
+.terminal_toolbar {
+    /* organizacao dos elementos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* cor de fundo */
+    background: #212121;
+    /* tamanho */
+    height: 30px;
+    /* letras */
+    font-size: 25px;
+    font-weight: bold;
+    color: #9EFF83;
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+.terminal_body {
+    display: flex; /* Arrange content in a row */
+    font-family: 'Font-Terminal', monospace;
+    justify-content: space-between; /* Push output and button to opposite ends */
+    align-items: center; /* Align items vertically */
 }
 
-@keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: #00FF00; }
+/* Terminal Output */
+.terminal_output {
+    display: flex;
+    flex-direction: column; /* Stack text lines vertically */
+    gap: 10px; /* Add space between text lines */
+    align-items: flex-start;
 }
 
-#boot-output p {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #00FF00;
-  color: #00FF00;
-  margin: 5px 0;
+/* Terminal */
+.terminal_frame {
+    /* tamanho do terminal* */
+    width: 80%;
+    height: 25%; 
+    /* organizacao dos elementos */
+    display: flex;
+    flex-direction: column;
+    /* espaco entre os elementos filhos */
+    justify-content: space-between;
+    /* Elemento nao se move */
+    position: absolute; 
+    /* posicao tem de ser na parte de baixo */
+    bottom: 0;
+    /* 10% nos dois lados, posicionando no meio da tela */
+    left: 10%; 
+    /* cor de fundo */
+    background: #1e1e1e;
+    border: 1px solid #9EFF83; /* Add border */
+    color: #9EFF83;
+    /* posicao do terminal */
+    position: fixed;
+    bottom: 0;
+    /* fica no meio, deixando 10% em cada lado ja que o terminal assume 80% da tela */
+    left: 10%; 
+    /* tamanho se mantem o mesmo */
+    box-sizing: border-box;
 }
 
-#boot-output p.typing {
-  width: 0;
-  animation: typing 4s steps(40, end), blink-caret 1s step-end infinite;
+/* Texto dentro do terminal */
+.output_text {
+    font-family: 'Font-Terminal', monospace;
+    margin: 0;
+    padding: 9px;
 }
 
-#boot-output p.finished-typing {
-  border-right: none;
+/* Skip Button */
+.skip_button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.2s;
 }
 
+.skip_button img {
+    width: 80px; 
+    height: 80px;
+    image-rendering: pixelated; 
+    transition: transform 0.2s; 
+}
+
+.skip_button:hover img {
+    transform: scale(1.1); 
+    content: url('assets/SkipBttAct.png'); 
+}

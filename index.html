@@ -3,91 +3,41 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Boot Sequence</title>
-        <link rel="stylesheet" href="boot.css">
+        <title>Pedro De Oliveira Haro Portfolio</title>
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="stars.css">
+        <link rel="stylesheet" href="boot.css">
     </head>
-    <body>
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
+<body>
+    <!-- Estrelas -->
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
 
-        <div id="boot-sequence">
-            <div id="boot-output"></div>
+    <!-- Onde o jogo acontece -->
+    <div class="game_frame">
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <!-- "terminal" -->
+    <div class="terminal_frame">
+        <div class="terminal_toolbar">
+            <p class="user">Game Status</p>
         </div>
-        <p id="continue-message" class="hidden">Press <strong>Enter</strong> to continue...</p>
-        <script src="stars.js"></script>
-        <script>
-function handleKeyPress(event) {
-    if (event.key === "Enter") {
-        proceedToNextPage();
-    }
-}
+        <div class="terminal_body">
+            <div class="terminal_output">
+                <pre class="output_text">user@User123:~$ Lives: 3</pre>
+                <pre class="output_text">user@User123:~$ 0</pre>
+            </div>
+                <a href="home.html">
+            <button  class="skip_button"><img src="assets/SkipBttDeac.png"></button>
+</a>
+        </div>
+    </div>
 
-function handleClick() {
-    proceedToNextPage();
-}
-
-function proceedToNextPage() {
-    window.location.href = "home.html"; 
-    document.removeEventListener('keydown', handleKeyPress);
-    document.removeEventListener('click', handleClick);
-}
-const bootMessages = [
-    "$ Initializing system...",
-    "$ Checking Neovim configuration...",
-    "$ Loading projects...",
-    "$ Setting up retro interface...",
-    "$ Configuring terminal display...",
-    "$ Almost ready..."
-];
-
-const bootOutput = document.getElementById('boot-output');
-const continueMessage = document.getElementById('continue-message');
-
-function simulateBootSequence() {
-    document.addEventListener('keydown', handleKeyPress);
-    document.addEventListener('click', handleClick);
-    let currentMessageIndex = 0;
-
-    function displayNextMessage() {
-        if (currentMessageIndex < bootMessages.length) {
-            const currentMessage = bootMessages[currentMessageIndex];
-            const typingSpeed = 100;
-            const typingDuration = (currentMessage.length * typingSpeed) - 600;
-
-            const message = document.createElement('p');
-            message.textContent = currentMessage;
-            message.classList.add('typing');
-            bootOutput.appendChild(message);
-
-            if (currentMessageIndex > 0) {
-                const previousMessage = bootOutput.children[currentMessageIndex - 1];
-                previousMessage.classList.remove('typing');
-                previousMessage.classList.add('finished-typing');
-            }
-
-            currentMessageIndex++;
-
-            setTimeout(displayNextMessage, typingDuration);
-        } else {
-            const lastMessage = bootOutput.children[currentMessageIndex - 1];
-            lastMessage.classList.remove('typing');
-            lastMessage.classList.add('finished-typing');
-
-            setTimeout(() => {
-                continueMessage.classList.remove('hidden');
-                document.addEventListener('keydown', handleKeyPress);
-                document.addEventListener('click', handleClick); 
-            }, 1000);
-        }
-    }
-
-    displayNextMessage();
-}
-
-window.addEventListener('load', simulateBootSequence);
-</script>
-    </body>
+    <!-- Scripts -->
+    <script src="stars.js"></script>
+    <script src="game.js"></script>
+</body>
 </html>
 
