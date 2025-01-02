@@ -8,36 +8,36 @@
         <link rel="stylesheet" href="stars.css">
         <link rel="stylesheet" href="boot.css">
     </head>
-<body>
-    <!-- Estrelas -->
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
+    <body>
+        <!-- Estrelas -->
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
 
-    <!-- Onde o jogo acontece -->
-    <div class="game_frame">
-        <canvas id="gameCanvas"></canvas>
-    </div>
-
-    <!-- "terminal" -->
-    <div class="terminal_frame">
-        <div class="terminal_toolbar">
-            <p class="user">Game Status</p>
+        <!-- Onde o jogo acontece -->
+        <div class="game_frame">
+            <canvas id="gameCanvas"></canvas>
         </div>
-        <div class="terminal_body">
-            <div class="terminal_output">
-                <pre class="output_text">user@User123:~$ Lives: 3</pre>
-                <pre class="output_text">user@User123:~$ 0</pre>
+
+        <!-- "terminal" -->
+        <div class="terminal_frame">
+            <div class="terminal_toolbar">
+                <p class="user">Game Status</p>
             </div>
+            <div class="terminal_body">
+                <div class="terminal_output">
+                    <pre class="output_text">user@User123:~$ Lives -> <span id="lifecounter"> 3 </span> </pre>
+                    <pre class="output_text">user@User123:~$ Score -> <span id="scorecounter"> 0 </span></pre>
+                </div>
                 <a href="home.html">
-            <button  class="skip_button"><img src="assets/SkipBttDeac.png"></button>
-</a>
+                    <button  class="skip_button"><img src="assets/SkipBttDeac.png"></button>
+                </a>
+            </div>
         </div>
-    </div>
 
-    <!-- Scripts -->
-    <script src="stars.js"></script>
-    <script src="game.js"></script>
-</body>
+        <!-- Scripts -->
+        <script src="stars.js"></script>
+        <script src="game.js"></script>
+    </body>
 </html>
 

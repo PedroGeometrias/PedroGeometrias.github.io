@@ -249,7 +249,7 @@ function checkCollisions() {
                 bullets.splice(bulletIndex, 1);
                 releaseMeteorite(meteorite);
                 activeMeteorites.splice(meteoriteIndex, 1);
-                score += 1;
+                score += 10;
             }
         });
     });
@@ -332,14 +332,21 @@ function drawSpaceship() {
 // funcoes do jogo 
 function endGame() {
     cancelAnimationFrame(gameLoopID);
-    alert("Game Over! Sua pontuação foi: " + score);
     location.reload(); 
+}
+
+// escrever no terminal
+function writeGameVars(){
+    let lifeCount = document.getElementById("lifecounter")
+    lifeCount.textContent = lives;
+    let scoreCount = document.getElementById("scorecounter");
+    scoreCount.textContent = score;
 }
 
 // Game loop
 let gameLoopID;
 let lastFrameTime = 0;
-const frameInterval = 1000 / 80;
+const frameInterval = 1000 / 60;
 let lastMeteoriteSpawn = 0;
 const meteoriteSpawnInterval = 500;
 function gameLoop(timestamp) {
@@ -353,8 +360,9 @@ function gameLoop(timestamp) {
     drawSpaceship();
     updateBullets();
     drawBullets();
+    writeGameVars();
 
-    if (timestamp - lastMeteoriteSpawn > meteoriteSpawnInterval) {
+    if (timestamp - lastMeteoriteSpawn > meteoriteSpawnInterval - score / 8) {
         spawnMeteorite();
         lastMeteoriteSpawn = timestamp;
     }

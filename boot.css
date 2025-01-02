@@ -72,18 +72,19 @@ body {
     color: #9EFF83;
 }
 
+/* corpo do terminal */
 .terminal_body {
-    display: flex; /* Arrange content in a row */
+    display: flex; 
     font-family: 'Font-Terminal', monospace;
-    justify-content: space-between; /* Push output and button to opposite ends */
-    align-items: center; /* Align items vertically */
+    justify-content: space-between; 
+    align-items: center; 
 }
 
-/* Terminal Output */
+/* output do terminal */
 .terminal_output {
     display: flex;
-    flex-direction: column; /* Stack text lines vertically */
-    gap: 10px; /* Add space between text lines */
+    flex-direction: column; 
+    gap: 10px; 
     align-items: flex-start;
 }
 

@@ -41,7 +41,7 @@ from, to { border-color: transparent; }
 
 /* agr eu seto coisas padrao do site, nada muito diferente do normal */
 body {
-    cursor: url('assets/cursor.png'),auto;
+    cursor: url('./assets/cursor.png'),auto;
     background-color: #141010;
     color: #9EFF83;
     font-size:20px;
