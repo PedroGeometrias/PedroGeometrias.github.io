@@ -33,7 +33,7 @@ meteorito2.src = "assets/meteorito2.png";
 const meteorites = [meteorito1, meteorito2];
 
 
-// Cache // 
+// Pools // 
 
 // salvo angulos ja usados
 const sinCache = {};
@@ -99,32 +99,26 @@ canvas.addEventListener("mousemove", (event) => {
 
 // tiro das balas
 canvas.addEventListener("mousedown", (event) => {
-    // canvas em relacao a pagina
     const rect = canvas.getBoundingClientRect();
+    const dx = (event.clientX - rect.left) - spaceship.x;
+    const dy = (event.clientY - rect.top) - spaceship.y;
+    const length = Math.hypot(dx, dy);
 
-    // posicao do mouse
-    const mouseX = event.clientX - rect.left;
-    const mouseY = event.clientY - rect.top;
-    
-    // distancia do mouse e da nave
-    const dx = mouseX - spaceship.x;
-    const dy = mouseY - spaceship.y;
+    // div por zero
+    if (length === 0) return;
 
-    // angulo de rotacao
-    const angle = Math.atan2(dy, dx);
+    const dirX = dx / length;
+    const dirY = dy / length;
 
-    // reserva de angulos
-    const { cos, sin } = getSinCos(angle);
-
-    // pego da reserva de balas
     const bullet = getBullet();
 
     // direca da bala
-    bullet.posix = spaceship.x + 15 * cos;
-    bullet.posiy = spaceship.y + 15 * sin;
+    bullet.posix = spaceship.x + 15 * dirX;
+    bullet.posiy = spaceship.y + 15 * dirY;
 
     // propriedades
-    bullet.angle = angle;
+    bullet.dirX = dirX;
+    bullet.dirY = dirY;
     bullet.speed = 5;
     bullet.active = true;
     bullets.push(bullet);
@@ -132,24 +126,18 @@ canvas.addEventListener("mousedown", (event) => {
 
 // updates
 function updateBullets() {
-    // navego a lista de balas
     bullets.forEach((bullet, index) => {
-        // verifico de a bala existe
         if (!bullet.active) return;
-        // pego o angulo da reserva
-        const { cos, sin } = getSinCos(bullet.angle);
-        // upadate da posicao da bala 
-        bullet.posix += bullet.speed * cos + 0.29;
-        bullet.posiy += bullet.speed * sin + 0.25;
 
-        // colisao da bala
+        bullet.posix += bullet.speed * bullet.dirX + 0.29;
+        bullet.posiy += bullet.speed * bullet.dirY + 0.25;
+
         if (
             bullet.posix < 0 ||
             bullet.posix > canvas.width ||
             bullet.posiy < 0 ||
             bullet.posiy > canvas.height
         ) {
-            // libero a bala
             releaseBullet(bullet);
             bullets.splice(index, 1);
         }
@@ -163,6 +151,8 @@ function spawnMeteorite() {
     // randomizo os meteoros 
     const meteoriteType = Math.random() < 0.6 ? meteorito1 : meteorito2;
     const size = meteoriteType === meteorito1 ? 32 : 48;
+    // o meteorito maior tem duas vidas
+    const health = meteoriteType === meteorito2 ? 2 : 1;
     // randomizo o lado
     const side = Math.floor(Math.random() * 4);
     // variaveis
@@ -202,8 +192,11 @@ function spawnMeteorite() {
     meteorite.size = size;
     meteorite.speedX = speedX;
     meteorite.speedY = speedY;
+    meteorite.health = health;
     meteorite.type = meteoriteType;
     meteorite.active = true;
+
+    // lista ativa
     activeMeteorites.push(meteorite);
 }
 
@@ -218,9 +211,9 @@ function updateMeteorites() {
         // colisao com as paredes
         if (
             meteorite.x < -meteorite.size ||
-            meteorite.x > canvas.width + meteorite.size ||
-            meteorite.y < -meteorite.size ||
-            meteorite.y > canvas.height + meteorite.size
+                meteorite.x > canvas.width + meteorite.size ||
+                meteorite.y < -meteorite.size ||
+                meteorite.y > canvas.height + meteorite.size
         ) {
             // limpo a reserva
             releaseMeteorite(meteorite);
@@ -240,16 +233,22 @@ function checkCollisions() {
             // colisao da bala com o meteoro
             if (
                 bullet.posix >= meteorite.x - meteorite.size / 2 &&
-                bullet.posix <= meteorite.x + meteorite.size / 2 &&
-                bullet.posiy >= meteorite.y - meteorite.size / 2 &&
-                bullet.posiy <= meteorite.y + meteorite.size / 2
+                    bullet.posix <= meteorite.x + meteorite.size / 2 &&
+                    bullet.posiy >= meteorite.y - meteorite.size / 2 &&
+                    bullet.posiy <= meteorite.y + meteorite.size / 2
             ) {
                 // limpo a reserva
                 releaseBullet(bullet);
                 bullets.splice(bulletIndex, 1);
-                releaseMeteorite(meteorite);
-                activeMeteorites.splice(meteoriteIndex, 1);
-                score += 10;
+                meteorite.health -= 1;
+                if(meteorite.health <=0){
+                    if(meteorite.type == meteorito2){
+                        score+=10;
+                    }
+                    releaseMeteorite(meteorite);
+                    activeMeteorites.splice(meteoriteIndex, 1);
+                    score += 10;
+                }
             }
         });
     });
@@ -288,7 +287,6 @@ function drawBullets() {
     bullets.forEach((bullet) => {
         if (bullet.active) {
             context.fillStyle = "cyan";
-            // ciano 8x8
             context.fillRect(bullet.posix - 2, bullet.posiy - 2, 8, 8);
         }
     });
@@ -343,7 +341,7 @@ function writeGameVars(){
     scoreCount.textContent = score;
 }
 
-// Game loop
+// game loop
 let gameLoopID;
 let lastFrameTime = 0;
 const frameInterval = 1000 / 60;
