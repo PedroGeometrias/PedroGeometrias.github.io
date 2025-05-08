@@ -1,142 +1,185 @@
 <!DOCTYPE html>
-<!-- 
-Criador : Pedro De Oliveira Haro
-dia : 03/07/2024
-Funcao : este arquivo contem a estrutura do meu portfolio, contem tambem o script necessário para renderizar as 
-estrelas na janela
--->
-<!-- Defino a linguagem do site como ingles-->
+<!-- this gets switched on lang.js case flag is clicked -->
+<!-- if you're reading this, it's worth noticing that I placed the i18n-data on every translatable content.
+     Was a pain but totally worth -->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro De Oliveira Haro Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="stars.css">
-</head>
-<body>
-        <!-- criando os elementos que representam os efeitos de estrelas na pagina -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title data-i18n="page_title">Pedro De Oliveira Haro Portfolio</title>
+
+        <!-- styles -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="stars.css">
+        <link rel="stylesheet" href="alienFeatures.css">
+    </head>
+    <body>
+        <!-- the stars -->
         <div id="stars"></div>
         <div id="stars2"></div>
         <div id="stars3"></div>
 
-        <!-- Aqui eu crio uma pseudo home, onde eu coloco alguns links da pagina organizados por secoes-->
+        <!-- header -->
         <header>
-            <!-- termAnim e a animacao de digitacao-->
+            <!-- this is the terminal animation -->
             <div class="termAnim">
-                <h1>$ Pedro De Oliveira Haro Portfolio</h1>
+                <h1>$ <span data-i18n="page_title">Pedro De Oliveira Haro Portfolio</span></h1>
             </div>
-            <!-- links que ajudam na navegacao do site -->
+
+            <!-- this one caries links to places inside the site, for easy navigation -->
             <nav class="navBar">
                 <ul>
-                    <li><a href="#about">About Me</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about"   data-i18n="nav_about">About Me</a></li>
+                    <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+                    <li><a href="#skills"   data-i18n="nav_skills">Skills</a></li>
+                    <li><a href="#contact"  data-i18n="nav_contact">Contact</a></li>
                 </ul>
+
+                <!-- button for switching the current language, it's a shitty flag sprite that I drew high on caffeine.
+                     worth noticing it's on the same place as the navigation links -->
+                <button id="langToggle" aria-label="switch language">
+                    <img id="flagIcon" src="assets/flag_br.png" width="32" height="32" alt="language flag" />
+                </button>
+
             </nav>
         </header>
-        <!-- Um pouco sobre mim para possiveis contratantes-->
+
         <section id="about" class="section">
-            <h2>About Me</h2>
-                <p>
-                    My name is Pedro. My main interests are comics, math, video games, space, and Linux. The design of this website gives a 
-                    very nice picture of what type of person I am, and I'm happy that you took time out of your day to take a look at it
-                </p>
-                <p>
-                    My main focus is on close-to-the-metal languages like C, C++, and Assembly, but I like to feel fancy with Lua and Python 
-                    from time to time. My front-end skills are not bad either, with the stars being rendered on your 
-                    screen now, made entirely with pure CSS, same for the typing animations, and the whole logic of the site built in pure JavaScript,
-                    the same goes for the little game in the intro.
-                </p>
-                <p>
-                    I've been using Linux as my daily driver for some time now, getting a really good grasp at the powers of the terminal. 
-                    My entire workflow is centered around my keyboard and Neovim configuration, with Bash scripts tying everything together, I have a 
-                    good understanding of the linux terminals tools using them almost daily.
-               </p>
+            <h2 data-i18n="about_heading">About Me</h2>
+            <!-- ABOUT ME-->
+            <!-- not satisfied with current iteration of the about me section, will change this in the future, annoying to change
+                 since I have to also change the strings on lang.js , annoying to change -->
+            <p data-i18n="about_p1">
+                My name is Pedro. My main interests are comics, math, video games, space, and Linux.
+                The design of this website gives a very nice picture of what type of person I am,
+                and I'm happy that you took time out of your day to take a look at it.
+            </p>
+
+            <p data-i18n="about_p2">
+                My main focus is on close-to-the-metal languages like C, C++, and Assembly,
+                but I like to feel fancy with Lua and Python from time to time.
+                My front-end skills are not bad either, with the stars you see right now rendered entirely in pure CSS,
+                the typing animation done the same way, and the whole site logic built in pure JavaScript—
+                same goes for the little game in the intro.
+            </p>
+
+            <p data-i18n="about_p3">
+                I've been using Linux as my daily driver for some time now, getting a really good grasp of the terminal’s power.
+                My entire workflow is centered around my keyboard and a custom Neovim setup,
+                with Bash scripts tying everything together. I use Linux terminal tools almost daily.
+            </p>
         </section>
 
-        <!-- A parte mais importante do site, onde eu coloco os links dos meus projetos, e dou uma explicacao brevia deles-->
+        <!-- PROJECTS -->
+        <!-- here I list some projects that are relevant, or important to me -->
         <section id="projects" class="section">
-            <h2>Projects</h2>
+            <h2 data-i18n="projects_heading">Projects</h2>
+
             <div class="project">
                 <h3>CHESS AI</h3>
-                <p>
-                    I have written a AI that plays chess, it's integrated with a cross platform socket server written
-                    in c, that's connected with a chess board where users can play against my AI, the AI was built using
-                    tensorflow and the chess board with SLD2
+                <!-- this is the string that gets regurgitated by the little alien, when user clicks on the '?' button, every single project
+                     has that. The alien sprite was made by a friend of mine, you can probably tell because of the lack of talent
+                     on all the other sprites -->
+                <span class="project-help"
+                    data-msg-en="I've done some cool extras features, like a stack datastructure that lets you step back, plus an ASCII board on the side panel."
+                    data-msg-pt="Tem algumas features extras, como uma estrutura de pilha que grava os lances, permitindo voltar jogadas, ou o tabuleiro ASCII no painel lateral.">
+                </span>
+                <p data-i18n="proj_chess">
+                    I have written an AI that plays chess. It's integrated with a socket server written in C
+                    that connects to a physical chess board where users can play against the AI.
+                    The AI was built using TensorFlow and the board with SDL2.
                 </p>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/chessAI">View on GitHub</a>
             </div>
+
             <div class="project">
                 <h3>Neovim Configuration</h3>
-                <p>
-                    My custom Neovim config, having an extremely modular lsp configuration and custom keymappings for fast code editing, 
-                    with custom scripts for navigation and text manipulations, I've written a comprehensive README on its GitHub page
-                    if you are interested
+                <span class="project-help"
+                    data-msg-en="This is my main editor, I'm really proud of it, I've been using neovim for around 4 years, but I still use other text editors in especial occasions (JAVA)"
+                    data-msg-pt="Meu editor de texto principal, eu realmente gosto da minha config, uso neovim a mais ou menos 4 anos, porem uso outros editores em ocasioes especiais(JAVA)">
+                </span>
+                <p data-i18n="proj_neovim">
+                    My custom Neovim config, featuring an extremely modular LSP setup and custom key-mappings for fast editing,
+                    plus scripts for navigation and text manipulation. There’s a comprehensive README on GitHub if you’re curious.
                 </p>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/NeovimConfig">View on GitHub</a>
             </div>
+
             <div class="project">
                 <h3>Brainfuck Interpreter in C</h3>
-                <p>A lightweight and fast Brainfuck interpreter, it supports all Brainfuck commands and handles complex loop structures.
-                    It’s capable of managing up to 30,000 brainfuck cells, Implementing the loop logic was both the most difficulty and fun 
-                    part of this project.
+                <span class="project-help"
+                    data-msg-en="I made this interpreter for fun, but the loop logic was extremely painful to figure out, not worth it"
+                    data-msg-pt="Fiz esse interpretor mais por piada, porem a logica de loops foi horrivel de desenvolver, nao valheu a pena">
+                </span>
+                <p data-i18n="proj_brainfuck">
+                    A lightweight and fast Brainfuck interpreter that supports every command and handles complex loop structures.
+                    It manages up to 30 000 cells; implementing the loop logic was both the hardest and the most fun part.
                 </p>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/Brainfuck-in-c">View on GitHub</a>
             </div>
+
             <div class="project">
                 <h3>Space Invaders Game</h3>
-                <p>
-                This game is written in Java. I made it thread-safe with a game loop inspired by Minecraft. 
-                It has different types of aliens and a boss with multiple types of attacks. Everything has collision 
-                detection. The game loop handles the logic and the drawing, the latter involving multiple buffered 
-                images manipulated on the fly.
+                <span class="project-help"
+                    data-msg-en="The majority of the work was made by mem, you can check the git commits, but I had some help, for example this sprite alien"
+                    data-msg-pt="A maior parte do trabalho foi feito por mim, voce pode checar os commits, mas eu tive ajuda, por exemplo esse sprite de alien">
+                </span>
+                <p data-i18n="proj_space">
+                    This game is written in Java. I made it thread-safe with a game loop inspired by Minecraft.
+                    It has different alien types and a boss with multiple attack patterns.
+                    Everything has collision detection; the loop handles both logic and drawing with buffered images.
                 </p>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/space-invaders">View on GitHub</a>
             </div>
+
             <div class="project">
                 <h3>Server in C</h3>
-                <p>
-                    bi-directional communication between two clients, with a server whose purpose 
-                    is to relay messages. It is thread-safe and uses sockets, written in c.
+                <span class="project-help"
+                    data-msg-en="I made this a long time ago, turned out to be useful on the chess ai game"
+                    data-msg-pt="Eu fiz esse projeto a muito tempo, ele foi util no jogo de xadrez com IA">
+                </span>
+                <p data-i18n="proj_server">
+                    Bidirectional communication between two clients, with a server that simply relays messages.
+                    Thread-safe, uses sockets, and is written in C.
                 </p>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/Server-in-C">View on GitHub</a>
             </div>
+
             <div class="project">
                 <h3>BeeCrowd</h3>
-                <p>A list of every problem that I have ever finished from the BeeCrowd platform.</p>
+                <span class="project-help"
+                    data-msg-en="I am top 2% on beecrowd, only using c, lua and java"
+                    data-msg-pt="Sou top 2% no beecrowd, uso apenas c, lua e java">
+                </span>
+                <p data-i18n="proj_beecrowd">
+                    A list of every problem I have ever finished on the BeeCrowd platform.
+                </p>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/beeCrowdExercises">View on GitHub</a>
             </div>
         </section>
-        <!-- Aqui eu listo as linguagens de programacao que eu mais domino, a lista pode estar desatualizada-->
+
+        <!-- SKILLS -->
+        <!-- some more of relevant data-->
         <section id="skills" class="section">
-            <h2>Programming Languages</h2>
+            <h2 data-i18n="skills_heading">Programming Languages</h2>
             <ul>
-                <li>C</li>
-                <li>C++</li>
-                <li>Java</li>
-                <li>Lua</li>
-                <li>Assembly</li>
-                <li>Html</li>
-                <li>Css</li> 
-                <li>JavaScript</li> 
-                <li>Cobol</li> 
+                <li>C</li><li>C++</li><li>Java</li><li>Lua</li><li>Assembly</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>COBOL</li>
             </ul>
-            <!-- Algumas abilidades extras que possiveis contratantes se interessem, essa lista tbm pode estar desatualizada-->
-            <h2>Skills</h2>
+
+            <h2 data-i18n="other_skills_heading">Skills</h2>
             <ul>
-                <li>Portuguese</li>
-                <li>English</li>
-                <li>Excel</li>
-                <li>Linux</li>
+                <li data-i18n="skill_pt">Portuguese</li>
+                <li data-i18n="skill_en">English</li>
+                <li>Excel</li><li>Linux</li>
             </ul>
         </section>
-        <!-- Como me contactar caso se interessem-->
+
+        <!-- CONTACT -->
         <section id="contact" class="section">
-            <h2>Contact</h2>
+            <h2 data-i18n="contact_heading">Contact</h2>
             <p>Email: <a href="mailto:harop6770@gmail.com">harop6770@gmail.com</a></p>
         </section>
+
         <footer>
             <p>&copy; 2024 Pedro De Oliveira Haro</p>
             <p>
@@ -144,7 +187,42 @@ estrelas na janela
                 <a href="https://www.linkedin.com/in/pedro-oliveira-haro/">LinkedIn<img src="assets/Linkedinicon.ico" alt="Linkedin" class="icon"></a>
             </p>
         </footer>
+
+        <!-- scripts -->
+        <!-- the star generation logic -->
         <script src="stars.js"></script>
+        <!-- translation logic-->
+        <script src="lang.js"></script>
+        <script src="bubble.js"></script>
+    
+
+        <!-- ALIEN -->
+        <!-- this was a green frame, but now it's invisible because it added to much polution on the screen-->
+        <div id="alienBox">
+
+            <!-- the sprite -->
+            <img id="alienSprite" src="assets/alien.png" alt="">
+
+            <!-- bubble appears only if requested -->
+            <div id="alienBubble" hidden>
+                <div class="bub-a"></div>
+                <div class="bub-b"></div>
+                <div class="bub-c"></div>
+
+                <div class="speech-txt"></div>
+
+                <div class="bub-c"></div>
+                <div class="bub-b"></div>
+                <div class="bub-a"></div>
+
+                <div class="speech-arrow">
+                    <div class="arrow-w"></div>
+                    <div class="arrow-x"></div>
+                    <div class="arrow-y"></div>
+                    <div class="arrow-z"></div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
 

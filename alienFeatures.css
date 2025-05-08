@@ -1,0 +1,138 @@
+/*
+* ALIEN CSS
+*/
+
+@font-face {
+    font-family: 'Font-Terminal';
+    src: url('DinaRemasterII.woff') format('woff');
+}
+/* alien moviment */
+@keyframes floatY{
+    from{transform:translateY(0)}
+    to  {transform:translateY(-6px)}
+}
+
+/* alien location */
+#alienBox{
+    /* position fixed, scroling resistent */
+    position:fixed;
+    /* coords */
+    bottom:30px;
+    right:60px;
+    z-index:200;
+}
+
+/* sprite atr's */ 
+#alienSprite{
+    /* size */
+    width:54px;
+    height:54px;
+    image-rendering:pixelated;
+    /* alternating between forward and backwards */
+    animation:floatY 3s ease-in-out infinite alternate;
+}
+
+/* question mark features */
+
+/* question mark sprite */
+.project-help{
+    cursor:pointer;
+    margin-left:auto;
+    transition: transform 0.2s; 
+    width:28px;
+    height:28px;
+    background:url('assets/questionmark.png') no-repeat center/contain;
+    image-rendering:pixelated;
+    display:inline-block;
+}
+/* hover animation */
+.project-help:hover{ transform: scale(1.1); }
+
+/* keep helper snug to title */
+.project h3{display:inline-block;margin:0;}
+.project .project-help{display:inline-block;margin-left:6px;vertical-align:middle;}
+
+/* 
+* speech bubble, found this desing on the internet https://codepen.io/glenthemes/pen/aMWeRb , just
+* made some adaptations
+*/
+
+:root{
+    --bubble-border:#222;
+    --bubble-bg:#fcfcfc;
+    --bubble-text:#000;
+}
+
+#alienBubble{
+    position:absolute;
+    bottom:100%;
+    left:50%;
+    transform:translateX(-50%);
+    margin-bottom:6px;
+    width:170px;
+    z-index:210;
+}
+#alienBubble[hidden]{display:none;}
+
+#alienBubble .bub-a{
+    height:2px;
+    margin-left:6px;width:calc(100% - 12px);
+    background:var(--bubble-border);
+}
+#alienBubble .bub-b{
+    height:2px;
+    margin-left:4px;width:calc(100% - 12px);
+    background:var(--bubble-bg);
+    border-left:2px solid var(--bubble-border);
+    border-right:2px solid var(--bubble-border);
+}
+#alienBubble .bub-c{
+    height:2px;
+    margin-left:2px;width:calc(100% - 8px);
+    background:var(--bubble-bg);
+    border-left:2px solid var(--bubble-border);
+    border-right:2px solid var(--bubble-border);
+}
+
+#alienBubble .speech-txt{
+    width:calc(100% - 24px);
+    padding:10px;
+    background:var(--bubble-bg);
+    font-family: 'Font-Terminal', monospace; 
+    font-size:14px;
+    color:var(--bubble-text);
+    text-align:center;
+    border-left:2px solid var(--bubble-border);
+    border-right:2px solid var(--bubble-border);
+}
+
+#alienBubble .speech-arrow{
+    position:absolute;
+    /* sweet spot */
+    bottom:-9px;
+    right:40px;
+}
+
+#alienBubble .arrow-w{
+    width:8px;height:8px;
+    background:var(--bubble-bg);
+    border-left:2px solid var(--bubble-border);
+    border-right:2px solid var(--bubble-border);
+}
+#alienBubble .arrow-x{
+    width:6px;height:2px;
+    background:var(--bubble-bg);
+    border-left:2px solid var(--bubble-border);
+    border-right:2px solid var(--bubble-border);
+}
+#alienBubble .arrow-y{
+    margin-left:-2px;width:6px;height:2px;
+    background:var(--bubble-bg);
+    border-left:2px solid var(--bubble-border);
+    border-right:2px solid var(--bubble-border);
+}
+#alienBubble .arrow-z{
+    margin-left:-2px;width:8px;height:2px;
+    background:var(--bubble-border);
+}
+

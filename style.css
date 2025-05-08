@@ -32,12 +32,33 @@ from, to { border-color: transparent; }
     white-space: nowrap;
     margin: 0 auto;
     display: inline-block; 
+    position: fixed;
     /* aqui eu seto a animacao de "typing", ela dura 6 segundos e tem 33 passos, um para cada char, dps dela 
-* terminar eu comeco a animcao do cursor
-*/
+    * terminar eu comeco a animcao do cursor
+    */
     animation: typing 6s steps(33, end), blink-caret 1s step-end infinite 6s;
     position: relative;
 }
+
+/* botao que troca a lingua */
+#langToggle{
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+}
+
+#langToggle img {
+    width: 32px;
+    height: 32px;
+    image-rendering: pixelated;
+    transition: transform 0.15s;
+}
+
+#langToggle:hover img {
+    transform: scale(1.1);
+}
+
 
 /* agr eu seto coisas padrao do site, nada muito diferente do normal */
 body {
@@ -67,8 +88,20 @@ h2 {
 }
 
 .navBar{
-    border-top: 1px solid #9EFF83;
+    display:flex;
+    align-items:center;
+    border-top:1px solid #9EFF83;
+    gap:15px;                 /* breathing room between links and flag */
 }
+
+.navLinks{
+    display:flex;
+    list-style:none;
+    padding:0;
+    margin:0;
+    gap:15px;
+}
+
 .section {
     margin: 20px 0;
     padding: 10px;
@@ -97,6 +130,7 @@ footer {
 
 
 nav ul {
+    flex:1;
     list-style: none;
     padding: 0;
 }

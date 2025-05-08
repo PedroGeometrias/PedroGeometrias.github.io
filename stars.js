@@ -1,4 +1,5 @@
-// Starry background functions
+// JAVASCRIPT que induz a logica das estrelas
+
 function generateStars(id, count) {
     const container = document.getElementById(id);
     const existingStars = container.getElementsByClassName('star');
