@@ -10,13 +10,13 @@ const translations={
 
         about_heading:"Sobre Mim",
         about_p1:"Meu nome é Pedro. Meus principais interesses são quadrinhos, matemática, videogames, espaço e Linux. O design deste site mostra bem que tipo de pessoa eu sou, e fico feliz que você tenha tirado um tempo do seu dia para dar uma olhada.",
-        about_p2:"Meu foco principal são linguagens de baixo nível como C, C++ e Assembly, mas gosto de brincar com Lua e Python de vez em quando. Minhas skills de front-end também não são ruins: essas estrelas aí no fundo são puro CSS, a animação de digitação idem, e toda a lógica do site é JavaScript puro — inclusive o joguinho da intro.",
-        about_p3:"Uso Linux como sistema principal há um bom tempo e já peguei bem o jeito do terminal. Todo o meu fluxo de trabalho gira em torno do teclado e de uma config custom do Neovim, com scripts Bash amarrando tudo. Uso as ferramentas de terminal do Linux praticamente todo dia.",
+        about_p2:"Meu foco principal são linguagens de baixo nível como C, C++ e Assembly, mas gosto de brincar com Lua e Python de vez em quando. Minhas skills de front-end também não são ruins: essas estrelas aí no fundo são puro CSS, a animação de digitação etc, e toda a lógica do site é JavaScript puro, inclusive o joguo a intro.",
+        about_p3:"Uso Linux como sistema principal há um bom tempo e já peguei bem o jeito do terminal. Todo o meu setup gira em torno do teclado e da minha config no Neovim, com scripts Bash amarrando tudo. Uso as ferramentas de terminal do Linux praticamente todo dia.",
 
         projects_heading:"Projetos",
         proj_chess:"Escrevi uma IA que joga xadrez. Ela se integra a um servidor socket em C que se conecta a um tabuleiro, permitindo que usuários joguem contra a IA. A IA foi feita com TensorFlow e o tabuleiro com SDL2.",
-        proj_neovim:"Minha config personalizada do Neovim, com LSPs extremamente modulares e mapeamentos de tecla para edição rápida, além de scripts para navegação e manipulação de texto. Tem um README completo no GitHub se quiser conferir.",
-        proj_brainfuck:"Um interpretador Brainfuck leve e rápido, que suporta todos os comandos e lida com estruturas de loop complexas. Aguenta até 30 000 células; implementar a lógica de loop foi a parte mais difícil e mais divertida.",
+        proj_neovim:"Minha config personalizada do Neovim, com um setup de LSPs modulares e mapeamentos de tecla para edição ed texto, tenho comnados de scripts para navegação e manipulação de texto. Tem um README completo no GitHub se quiser dar uma olhada.",
+        proj_brainfuck:"Um interpretador Brainfuck leve e rápido, que suporta todos os comandos e lida com estruturas de loop complexas do Brainfuck. Aguenta até 30 000 células; implementar a lógica de loop foi a parte mais difícil e mais divertida.",
         proj_space:"Este jogo foi escrito em Java. Tornei o loop de jogo thread-safe inspirado no Minecraft. Tem vários tipos de alienígenas e um chefe com múltiplos padrões de ataque. Tudo com detecção de colisão; o loop cuida de lógica e desenho com imagens em buffer.",
         proj_server:"Comunicação bidirecional entre dois clientes, com um servidor que apenas retransmite mensagens. Thread-safe, usa sockets e foi escrito em C.",
         proj_beecrowd:"Lista de todos os problemas que já resolvi na plataforma BeeCrowd.",

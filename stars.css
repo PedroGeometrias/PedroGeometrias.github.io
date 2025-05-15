@@ -9,6 +9,7 @@
 }
 
 
+/* main type of star */
 .star {
     position: absolute;
     width: 1px;
@@ -24,8 +25,7 @@
     animation: animStar 100s linear infinite;
 }
 
-/* aqui eu crio as anas vermelhas, um tipo diferente de estrela, ela é menor
-*  e a luz dela é mais fraca */
+/* here is where I create the red stars, they are smaller */
 .star.red {
     width: 2px;
     height: 2px;

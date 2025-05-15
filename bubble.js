@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
     // WRITING ANIMATION
+    let isIdle = true;
     // holds the intervalID
     let bubbleTimer=null;
     // dictates visibility
@@ -42,10 +43,50 @@ document.addEventListener('DOMContentLoaded',()=>{
             typeBubble(msg);
         }
         // call speak and holds the click
-        btn.addEventListener('click', e=>{ speak(); e.stopPropagation(); });
+        btn.addEventListener('click', e=>{ isIdle = false; speak(); e.stopPropagation(); });
         document.addEventListener('languageChanged', speak);
     });
     // closing in case scrolling and clicking
-    document.addEventListener('click', ()=> bubble.hidden=true );
-    window.addEventListener('scroll', ()=> bubble.hidden=true );
+    document.addEventListener('click', ()=>{
+        isIdle = true;
+        bubble.hidden=true
+    });
+    window.addEventListener('scroll', ()=> {
+        isIdle = true;
+        bubble.hidden=true
+    });
+
+    // random messages that the alien will say when hes idle
+    const randMsg = {
+        en: [
+            "Did you know that clicking the '?' makes me tell you more interesting stuff about each project?",
+            "This website was built with only js/css/html",
+            "Did you know that clicking the '?' makes me tell you more interesting stuff about each project?",
+            "I drew all the sprites, minus this little alien here",
+            "Did you know that the 18 on data-i18n is a numeronym for \"internationalization\"?",
+            "Did you know that clicking the '?' makes me tell you more interesting stuff about each project?",
+        ],
+
+        pt: [
+            "Voce sabia que clicando em '?' me faz te contar coisas mais interessantes sobre os projetos?",
+            "Esse site foi feito com apenas js/css/html",
+            "Voce sabia que clicando em '?' me faz te contar coisas mais interessantes sobre os projetos?",
+            "Eu desenhei todos os sprites do site, menos os sprite desse alien",
+            "Voce sabia que o 18 em data-i18n representa a quantidade the letras em \"internationalization\" sem contar o 'i' e 'n'?",
+            "Voce sabia que clicando em '?' me faz te contar coisas mais interessantes sobre os projetos?",
+        ]
+    }
+    function pickIdleMessage(){
+        const currentLang = getLang();
+        const msgs = randMsg[currentLang] || randMsg.en;
+        return msgs[Math.floor(Math.random() * msgs.length)];
+    }
+    function maybeSayIdle(){
+    // removing the chance of erasing user isIdle for alien speaking
+    if(isIdle == true){
+        typeBubble(pickIdleMessage());
+    }
+    }
+    setInterval(maybeSayIdle, 1000 * (10 + Math.random() * 20));
 });
+
