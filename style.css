@@ -1,6 +1,7 @@
 /* 
 * Creator: Pedro Haro
 * Creation date: 04/07/2024
+* esta em ingles pq esse foi um dos primeiros arquivos, junto com o home.html
 * Name: Style.css
 * Purpose: customize my portfolio website, along with the creation of animations
 */
@@ -37,6 +38,26 @@ from, to { border-color: transparent; }
     animation: typing 6s steps(33, end), blink-caret 1s step-end infinite 6s;
     position: relative;
 }
+/* unvisited link */
+a:link {
+    color: #5b8e4d;
+}
+
+/* visited link */
+a:visited {
+    color: #5b8e4d;
+}
+
+/* mouse over link */
+a:hover {
+    color: #9EFF83;
+}
+
+
+/* selected link */
+a:active {
+    color: #9EFF83;
+}
 
 /* button that switches language */
 #langToggle{
@@ -47,9 +68,9 @@ from, to { border-color: transparent; }
 }
 
 #langToggle img {
-    width: 32px;
-    height: 32px;
-    image-rendering: pixelated;
+    width: 60px;
+    height: 40px;
+   image-rendering: pixelated;
     transition: transform 0.15s;
 }
 
@@ -106,18 +127,48 @@ h2 {
     border: 1px solid #9EFF83;
 }
 
+.start_link {
+    display: flex;
+}
 .project {
     margin-bottom: 20px;
 }
 
 .project a {
-    color: #9EFF83;
-    text-decoration: underline 
+  position: relative;
+  display: inline-block;
+  color: #5b8e4d;
+  text-decoration: none;
+}
+.project a:hover{
+    color:#9EFF83;
 }
 
-.project a:hover {
-    text-decoration: underline;
+/* I took this link style from this website : https://wpdean.com/css-link-styles/ */
+.project a:before, .project a:after {
+  content: '';
+  border-bottom: solid 1px #9EFF83;
+  position: absolute;
+  bottom: 0;
+  width: 0;
 }
+
+.project a:before { left: 0; }
+.project a:after { right: 0; }
+
+.project a:hover:before{
+    width :50%;
+}
+.project a:hover:after {
+  width: 50%;
+}
+
+.project a:before, .project a:after {
+  -webkit-transition: all 0.9s ease;
+          transition: all 0.9s ease;
+}
+
+
 
 footer {
     margin-top: 50px;

@@ -34,7 +34,6 @@ const meteorites = [meteorito1, meteorito2];
 
 
 // Pools // 
-
 // salvo angulos ja usados
 const sinCache = {};
 const cosCache = {};

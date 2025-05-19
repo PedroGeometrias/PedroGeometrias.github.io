@@ -9,6 +9,7 @@ const translations={
         nav_contact:"Contato",
 
         about_heading:"Sobre Mim",
+        start_sec:"-> COMECO",
         about_p1:"Meu nome é Pedro. Meus principais interesses são quadrinhos, matemática, videogames, espaço e Linux. O design deste site mostra bem que tipo de pessoa eu sou, e fico feliz que você tenha tirado um tempo do seu dia para dar uma olhada.",
         about_p2:"Meu foco principal são linguagens de baixo nível como C, C++ e Assembly, mas gosto de brincar com Lua e Python de vez em quando. Minhas skills de front-end também não são ruins: essas estrelas aí no fundo são puro CSS, a animação de digitação etc, e toda a lógica do site é JavaScript puro, inclusive o joguo a intro.",
         about_p3:"Uso Linux como sistema principal há um bom tempo e já peguei bem o jeito do terminal. Todo o meu setup gira em torno do teclado e da minha config no Neovim, com scripts Bash amarrando tudo. Uso as ferramentas de terminal do Linux praticamente todo dia.",
