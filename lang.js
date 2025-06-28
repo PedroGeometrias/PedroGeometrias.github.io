@@ -16,6 +16,7 @@ const translations={
 
         projects_heading:"Projetos",
         proj_chess:"Escrevi uma IA que joga xadrez. Ela se integra a um servidor socket em C que se conecta a um tabuleiro, permitindo que usuários joguem contra a IA. A IA foi feita com TensorFlow e o tabuleiro com SDL2.",
+        proj_SHA:"Implementacao do SHA-256 em c, com o objeto de imitar o comando sha256sum do linux", 
         proj_neovim:"Minha config personalizada do Neovim, com um setup de LSPs modulares e mapeamentos de tecla para edição ed texto, tenho comnados de scripts para navegação e manipulação de texto. Tem um README completo no GitHub se quiser dar uma olhada.",
         proj_brainfuck:"Um interpretador Brainfuck leve e rápido, que suporta todos os comandos e lida com estruturas de loop complexas do Brainfuck. Aguenta até 30 000 células; implementar a lógica de loop foi a parte mais difícil e mais divertida.",
         proj_space:"Este jogo foi escrito em Java. Tornei o loop de jogo thread-safe inspirado no Minecraft. Tem vários tipos de alienígenas e um chefe com múltiplos padrões de ataque. Tudo com detecção de colisão; o loop cuida de lógica e desenho com imagens em buffer.",

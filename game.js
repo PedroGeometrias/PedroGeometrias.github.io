@@ -345,7 +345,7 @@ let gameLoopID;
 let lastFrameTime = 0;
 const frameInterval = 1000 / 60;
 let lastMeteoriteSpawn = 0;
-const meteoriteSpawnInterval = 500;
+const meteoriteSpawnInterval = 100;
 function gameLoop(timestamp) {
     if (timestamp - lastFrameTime < frameInterval) {
         requestAnimationFrame(gameLoop);
