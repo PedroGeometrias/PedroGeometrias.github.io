@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!-- this gets switched on lang.js case flag is clicked -->
 <!-- if you're reading this, it's worth noticing that I placed the i18n-data on every translatable content.
-     Was a pain but totally worth -->
+Was a pain but totally worth -->
 <html lang="en">
-        <link rel="icon" type="image/X-icon" href="assets/test.ico"
+    <link rel="icon" type="image/X-icon" href="assets/test.ico"
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="stars.css">
         <link rel="stylesheet" href="alienFeatures.css">
+        <link rel="stylesheet" href="examples.css">
     </head>
     <body>
         <!-- the stars -->
@@ -37,7 +38,7 @@
                 </ul>
 
                 <!-- button for switching the current language, it's a shitty flag sprite that I drew high on caffeine.
-                     worth noticing it's on the same place as the navigation links -->
+worth noticing it's on the same place as the navigation links -->
                 <button id="langToggle" aria-label="switch language">
                     <img id="flagIcon" src="assets/flag_br.png" width="32" height="32" alt="language flag" />
                 </button>
@@ -50,7 +51,7 @@
             <a class="start_link" data-i18n="start_sec" href ="#start">-> START SECTION</a>
             <!-- ABOUT ME-->
             <!-- not satisfied with current iteration of the about me section, will change this in the future, annoying to change
-                 since I have to also change the strings on lang.js , annoying to change -->
+since I have to also change the strings on lang.js , annoying to change -->
             <p data-i18n="about_p1">
                 My name is Pedro. My main interests are comics, math, video games, space, and Linux.
                 The design of this website gives a very nice picture of what type of person I am,
@@ -80,8 +81,8 @@
             <div class="project">
                 <h3>FRACTAL IN COBOL</h3>
                 <!-- this is the string that gets regurgitated by the little alien, when user clicks on the '?' button, every single project
-                     has that. The alien sprite was made by a friend of mine, you can probably tell because of the lack of talent
-                     on all the other sprites -->
+has that. The alien sprite was made by a friend of mine, you can probably tell because of the lack of talent
+on all the other sprites -->
                 <span class="project-help"
                     data-msg-en="Incredibly hard to make the c and cobol functions speak the same language"
                     data-msg-pt="Incrivelmente dificil fazer c e cobol falarem a mesma linugagem">
@@ -91,14 +92,33 @@
                     a GUI made in cobol, even harder to find a GUI that renders something as complex as a fractal, took me a long
                     time to do
                 </p>
+                <details class="proof-box">
+                    <summary class="proof-toggle" aria-label="Toggle project proof">
+                        <img src="assets/PlusSign.png"  class="icon plus"  alt="">
+                        <img src="assets/MinusSign.png" class="icon minus" alt="">
+                        <span class="visually-hidden">Show/Hide proof</span>
+                    </summary>
+
+                    <div class="proof-content">
+                        <video
+                            src="assets/proj_examples/burning ship/FractalVid.mp4"
+                            controls preload="metadata" playsinline
+                        ></video>
+
+                        <img
+                            src="assets/proj_examples/burning ship/FractalImg.png"
+                            loading="lazy" decoding="async"
+                        >
+                    </div>
+                </details>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/FRACTAL-WITH-COBOL">View on GitHub</a>
             </div>
             <p><a class="start_link" data-i18n="start_sec" href ="#start">-> START SECTION</a></p>
             <div class="project">
                 <h3>CHESS AI</h3>
                 <!-- this is the string that gets regurgitated by the little alien, when user clicks on the '?' button, every single project
-                     has that. The alien sprite was made by a friend of mine, you can probably tell because of the lack of talent
-                     on all the other sprites -->
+has that. The alien sprite was made by a friend of mine, you can probably tell because of the lack of talent
+on all the other sprites -->
                 <span class="project-help"
                     data-msg-en="I've done some cool extras features, like a stack datastructure that lets you step back, plus an ASCII board on the side panel."
                     data-msg-pt="Tem algumas features extras, como uma estrutura de pilha que grava os lances, permitindo voltar jogadas, ou o tabuleiro ASCII no painel lateral.">
@@ -108,6 +128,25 @@
                     that connects to a physical chess board where users can play against the AI.
                     The AI was built using TensorFlow and the board with SDL2.
                 </p>
+                <details class="proof-box">
+                    <summary class="proof-toggle" aria-label="Toggle project proof">
+                        <img src="assets/PlusSign.png"  class="icon plus"  alt="">
+                        <img src="assets/MinusSign.png" class="icon minus" alt="">
+                        <span class="visually-hidden">Show/Hide proof</span>
+                    </summary>
+
+                    <div class="proof-content">
+                        <video
+                            src="assets/proj_examples/chess/ChessVid.mp4"
+                            controls preload="metadata" playsinline
+                        ></video>
+
+                        <img
+                            src="assets/proj_examples/chess/ChessImg.png"
+                            loading="lazy" decoding="async"
+                        >
+                    </div>
+                </details>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/chessAI">View on GitHub</a>
             </div>
 
@@ -121,6 +160,20 @@
                 <p data-i18n="proj_SHA">
                     SHA-256 implementation on c, meant to be used as a the sha256sum on the linux terminal
                 </p>
+                <details class="proof-box">
+                    <summary class="proof-toggle" aria-label="Toggle project proof">
+                        <img src="assets/PlusSign.png"  class="icon plus"  alt="">
+                        <img src="assets/MinusSign.png" class="icon minus" alt="">
+                        <span class="visually-hidden">Show/Hide proof</span>
+                    </summary>
+
+                    <div class="proof-content">
+                        <img
+                            src="assets/proj_examples/SHA/ShaImg.png"
+                            loading="lazy" decoding="async"
+                        >
+                    </div>
+                </details>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/my_implementation-SHA"> View on GitHub</a>
             </div>
 
@@ -135,6 +188,20 @@
                     My custom Neovim config, featuring an extremely modular LSP setup and custom key-mappings for fast editing,
                     plus scripts for navigation and text manipulation. There’s a comprehensive README on GitHub if you’re curious.
                 </p>
+                <details class="proof-box">
+                    <summary class="proof-toggle" aria-label="Toggle project proof">
+                        <img src="assets/PlusSign.png"  class="icon plus"  alt="">
+                        <img src="assets/MinusSign.png" class="icon minus" alt="">
+                        <span class="visually-hidden">Show/Hide proof</span>
+                    </summary>
+
+                    <div class="proof-content">
+                        <img
+                            src="assets/proj_examples/neovim/NvimImg.png"
+                            loading="lazy" decoding="async"
+                        >
+                    </div>
+                </details>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/NeovimConfig">View on GitHub</a>
             </div>
 
@@ -168,6 +235,7 @@
             </div>
 
             <p><a class="start_link" data-i18n="start_sec" href ="#start">-> START SECTION</a></p>
+
             <div class="project">
                 <h3>Server in C</h3>
                 <span class="project-help"
@@ -178,6 +246,25 @@
                     Bidirectional communication between two clients, with a server that simply relays messages.
                     Thread-safe, uses sockets, and is written in C.
                 </p>
+                <details class="proof-box">
+                    <summary class="proof-toggle" aria-label="Toggle project proof">
+                        <img src="assets/PlusSign.png"  class="icon plus"  alt="">
+                        <img src="assets/MinusSign.png" class="icon minus" alt="">
+                        <span class="visually-hidden">Show/Hide proof</span>
+                    </summary>
+
+                    <div class="proof-content">
+                        <video
+                            src="assets/proj_examples/SERVER/ServerImg.mp4"
+                            controls preload="metadata" playsinline
+                        ></video>
+
+                        <img
+                            src="assets/proj_examples/chess/ChessImg.png"
+                            loading="lazy" decoding="async"
+                        >
+                    </div>
+                </details>
                 <a class="linkToGit" href="https://github.com/PedroGeometrias/Server-in-C">View on GitHub</a>
             </div>
 
@@ -232,7 +319,7 @@
         <!-- translation logic-->
         <script src="lang.js"></script>
         <script src="bubble.js"></script>
-    
+
 
         <!-- ALIEN -->
         <!-- this was a green frame, but now it's invisible because it added to much polution on the screen-->

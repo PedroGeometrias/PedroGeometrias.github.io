@@ -70,7 +70,7 @@ a:active {
 #langToggle img {
     width: 60px;
     height: 40px;
-   image-rendering: pixelated;
+    image-rendering: pixelated;
     transition: transform 0.15s;
 }
 
@@ -138,6 +138,7 @@ h2 {
   position: relative;
   display: inline-block;
   color: #5b8e4d;
+    margin-top:1%;
   text-decoration: none;
 }
 .project a:hover{
@@ -167,8 +168,6 @@ h2 {
   -webkit-transition: all 0.9s ease;
           transition: all 0.9s ease;
 }
-
-
 
 footer {
     margin-top: 50px;

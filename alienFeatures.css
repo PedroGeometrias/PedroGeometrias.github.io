@@ -46,8 +46,7 @@
     display:inline-block;
 }
 /* hover animation */
-.project-help:hover{ transform: scale(1.1); }
-
+.project-help:hover{ transform: scale(1.4); }
 /* keep helper snug to title */
 .project h3{display:inline-block;margin:0;}
 .project .project-help{display:inline-block;margin-left:6px;vertical-align:middle;}
