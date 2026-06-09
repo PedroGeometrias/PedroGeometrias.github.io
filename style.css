@@ -54,6 +54,10 @@ a:hover {
 }
 
 
+.seo-header {
+    position: absolute;
+    left: -9999px;
+}
 /* selected link */
 a:active {
     color: #9EFF83;

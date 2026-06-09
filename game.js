@@ -1,3 +1,12 @@
+(function checkScreenSize() {
+  const minWidth = 768;
+  const minHeight = 500;
+
+  if (window.innerWidth < minWidth || window.innerHeight < minHeight) {
+    window.location.href = "home.html";
+  }
+})();
+
 // Configuração inicial //
 const canvas = document.getElementById("gameCanvas");
 const context = canvas.getContext("2d", { alpha: true });
